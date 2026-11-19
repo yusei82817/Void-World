@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  font-family: 'IBM Plex Mono', monospace;
+  background: #080d18;
+  color: #dce8f7;
+  --cyan: #54d9f4;
+  --muted: #8293aa;
+  --panel: rgba(8, 15, 29, .78);
+  --line: rgba(117, 177, 211, .2);
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { background: #080d18; }
+#viewport { position: relative; width: 100%; height: 100%; min-height: 360px; overflow: hidden; isolation: isolate; }
+canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: -1; outline: none; }
+
+.topbar {
+  position: absolute; z-index: 2; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 26px; border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(5,10,20,.88), rgba(5,10,20,.12));
+  pointer-events: none;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark {
+  display: grid; place-items: center; width: 38px; height: 38px;
+  border: 1px solid var(--cyan); color: var(--cyan);
+  font: 700 21px Orbitron, sans-serif; transform: skew(-8deg);
+  box-shadow: 0 0 18px rgba(84,217,244,.15);
+}
+.brand strong { display: block; font: 600 14px Orbitron, sans-serif; letter-spacing: .16em; }
+.brand small { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; letter-spacing: .12em; }
+.status { color: #a9c3d5; font-size: 10px; letter-spacing: .1em; }
+.status-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: #69edbd; box-shadow: 0 0 10px #69edbd; }
+
+.help-panel, .telemetry {
+  position: absolute; z-index: 2; padding: 17px 18px;
+  background: var(--panel); border: 1px solid var(--line);
+  backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,.18);
+}
+.help-panel { top: 92px; left: 22px; width: min(310px, calc(100vw - 44px)); }
+.telemetry { right: 22px; bottom: 48px; width: min(330px, calc(100vw - 44px)); }
+h1 { margin: 0; color: var(--cyan); font: 600 16px Orbitron, sans-serif; letter-spacing: .14em; }
+.panel-subtitle { margin: 7px 0 14px; color: var(--muted); font-size: 9px; letter-spacing: .16em; }
+.control-row { display: flex; align-items: center; gap: 5px; min-height: 31px; }
+.control-row span { margin-left: 8px; color: #b7c7d9; font-size: 10px; }
+kbd {
+  display: inline-grid; place-items: center; min-width: 23px; height: 23px;
+  padding: 0 5px; border: 1px solid rgba(111,177,207,.38);
+  border-bottom-width: 2px; border-radius: 3px;
+  background: rgba(30,53,76,.55); color: #e5f6ff;
+  font: 500 10px 'IBM Plex Mono', monospace;
+}
+.hint { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
+.telemetry div { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; color: var(--muted); font-size: 9px; letter-spacing: .06em; }
+.telemetry strong { color: #d9edf9; font-weight: 500; text-align: right; }
+.crosshair { position: absolute; z-index: 1; left: 50%; top: 50%; width: 18px; height: 18px; transform: translate(-50%,-50%); opacity: .65; pointer-events: none; }
+.crosshair i, .crosshair b { position: absolute; display: block; background: var(--cyan); box-shadow: 0 0 7px var(--cyan); }
+.crosshair i { left: 8px; top: 1px; width: 1px; height: 16px; }
+.crosshair b { left: 1px; top: 8px; width: 16px; height: 1px; }
+.bottom-note { position: absolute; z-index: 2; left: 24px; bottom: 19px; color: #72859d; font-size: 9px; letter-spacing: .1em; pointer-events: none; }
+.bottom-note span { margin: 0 7px; color: var(--cyan); }
+.loading { position: absolute; z-index: 3; inset: 0; display: grid; place-items: center; background: #080d18; color: var(--cyan); font: 11px Orbitron, sans-serif; letter-spacing: .2em; transition: opacity .5s ease; pointer-events: none; }
+.loading.hidden { opacity: 0; }
+
+@media (max-width: 650px) {
+  .topbar { padding: 14px 16px; }
+  .help-panel { top: 76px; left: 12px; padding: 13px; width: 270px; }
+  .telemetry { right: 12px; bottom: 42px; width: min(300px, calc(100vw - 24px)); }
+  .bottom-note { left: 14px; bottom: 14px; font-size: 8px; }
+}
