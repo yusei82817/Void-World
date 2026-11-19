@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+  <title>Void World | 3D Camera Prototype</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="./main.js"></script>
+</head>
+<body>
+  <main id="viewport" aria-label="3D viewport">
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark">V</span><div><strong>VOID WORLD</strong><small>3D DEVELOPMENT VIEWPORT</small></div></div>
+      <div class="status"><span class="status-dot"></span> CAMERA ONLINE</div>
+    </div>
+
+    <section class="help-panel">
+      <h1>FREE CAMERA</h1>
+      <p class="panel-subtitle">KEYBOARD CONTROLS</p>
+      <div class="control-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>移動 / 前後左右</span></div>
+      <div class="control-row"><kbd>Z</kbd><kbd>X</kbd><span>上昇 / 下降</span></div>
+      <div class="control-row"><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><span>視点回転</span></div>
+      <p class="hint">画面内をクリックしてから操作できます</p>
+    </section>
+
+    <section class="telemetry" aria-live="polite">
+      <p class="panel-subtitle">CAMERA TELEMETRY</p>
+      <div>POSITION <strong id="position">X 0.00 / Y 2.00 / Z 8.00</strong></div>
+      <div>ROTATION <strong id="rotation">YAW 0.0° / PITCH 0.0°</strong></div>
+      <div>MOVE SPEED <strong>6.0 m/s</strong></div>
+    </section>
+
+    <div class="crosshair" aria-hidden="true"><i></i><b></b></div>
+    <div class="bottom-note">VOID WORLD <span>/</span> PROTOTYPE 0.1.0 <span>/</span> THREE.JS</div>
+    <div id="loading" class="loading">3D WORLD INITIALIZING...</div>
+  </main>
+</body>
+</html>
